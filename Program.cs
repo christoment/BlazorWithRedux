@@ -22,7 +22,9 @@ namespace BlazorWithRedux
 
             builder.Services.AddFluxor(options =>
             {
-                options.ScanAssemblies(typeof(Program).Assembly);
+                options
+                    .ScanAssemblies(typeof(Program).Assembly)
+                    .UseReduxDevTools();
             });
 
             await builder.Build().RunAsync();
