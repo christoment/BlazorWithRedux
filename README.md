@@ -20,3 +20,33 @@ Implementing [Redux](https://redux.js.org/introduction/three-principles) pattern
     dotnet watch run
     ```
 5. Your default browser should automatically opened for you.
+
+## Important Notes for Fluxor
+Fluxor needs the following dependencies added:
+1. Javascript file in `index.html`
+    ```html
+    <script src="_content/Fluxor.Blazor.Web/scripts/index.js"></script>
+    ```
+2. Store initialiser + DOM for the ReduxDevTool to look for:
+    ```html
+    <Fluxor.Blazor.Web.StoreInitializer/>
+    ```
+3. Fluxor initialisation in `Program.cs`
+    ```csharp
+    public class Program
+    {
+        public static async Task Main(string[] args)
+        {
+            var builder = WebAssemblyHostBuilder.CreateDefault(args);
+
+            builder.Services.AddFluxor(options =>
+            {
+                options
+                    .ScanAssemblies(typeof(Program).Assembly)
+                    .UseReduxDevTools(); // For ReduxDevTool support. Recommended to remove this on Production
+            });
+
+            // ...
+        }
+    }
+    ```
