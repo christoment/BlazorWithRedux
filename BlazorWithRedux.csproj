@@ -2,8 +2,6 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <!--<RuntimeIdentifier>browser-wasm</RuntimeIdentifier>-->
-    <!--<UseBlazorWebAssembly>true</UseBlazorWebAssembly>-->
   </PropertyGroup>
 
   <ItemGroup>
