@@ -1,5 +1,5 @@
 # BlazorWithRedux
-Implementing [Redux](https://redux.js.org/introduction/three-principles) pattern in Blazor WebAssembly using C#9 and [Fluxor](https://github.com/mrpmorris/Fluxor) on [.NET 5](https://dotnet.microsoft.com/download/dotnet/5.0).
+Implementing [Redux](https://redux.js.org/introduction/three-principles) pattern in Blazor WebAssembly using C#9 and [Fluxor](https://github.com/mrpmorris/Fluxor) on [.NET 5](https://dotnet.microsoft.com/download/dotnet/5.0) ([video](https://www.youtube.com/watch?v=sAyH-O0dFaI)).
 
 ## Dependencies added
 - `Fluxor.Blazor.Web` [v3.9.0](https://www.nuget.org/packages/Fluxor.Blazor.Web/3.9.0)
