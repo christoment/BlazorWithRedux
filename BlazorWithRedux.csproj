@@ -12,4 +12,9 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.5" PrivateAssets="all" />
   </ItemGroup>
 
+  <ItemGroup>
+    <!-- This exposes Program assembly in .NET 6 minimal hosting setup-->
+    <InternalsVisibleTo Include="BlazorWithRedux" />
+  </ItemGroup>
+
 </Project>
