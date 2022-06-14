@@ -1,7 +1,6 @@
 @page "/counter"
 
 @using BlazorWithRedux.States.Counter
-@using BlazorWithRedux.States.Counter.Actions
 
 @inject IState<CounterState> CounterState
 @inject IDispatcher Dispatcher
@@ -10,12 +9,12 @@
 
 <h1>Counter</h1>
 
-<p>Current count: @currentCount</p>
+<p>Current count: @CurrentCount</p>
 
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
 
 @code {
-    private int currentCount => CounterState.Value.Count;
+    private int CurrentCount => CounterState.Value.Count;
 
     private void IncrementCount()
     {

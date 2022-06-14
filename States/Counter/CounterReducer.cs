@@ -1,5 +1,4 @@
 using Fluxor;
-using BlazorWithRedux.States.Counter.Actions;
 
 namespace BlazorWithRedux.States.Counter
 {
