@@ -1,14 +1,14 @@
 # BlazorWithRedux
-Implementing [Redux](https://redux.js.org/introduction/three-principles) pattern in Blazor WebAssembly using [.NET 6](https://dotnet.microsoft.com/en-us/download/dotnet/6.0) and [Fluxor](https://github.com/mrpmorris/Fluxor).
+Implementing [Redux](https://redux.js.org/introduction/three-principles) pattern in Blazor WebAssembly using [.NET 7](https://dotnet.microsoft.com/en-us/download/dotnet/7.0) and [Fluxor](https://github.com/mrpmorris/Fluxor).
 You can also find the related YouTube video [here](https://www.youtube.com/watch?v=sAyH-O0dFaI).
 
 ## Prerequisites
-- [.NET 6 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
+- [.NET 7 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/7.0)
 - (Optional) [Redux DevTools Chrome extension](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en). Very handy to debug action dispatches and state changes.
 
 ## Dependencies added
-- `Fluxor.Blazor.Web` [v5.4.0](https://www.nuget.org/packages/Fluxor.Blazor.Web/3.9.0)
-- `Fluxor.Blazor.Web.ReduxDevTools` [v5.4.0](https://www.nuget.org/packages/Fluxor.Blazor.Web.ReduxDevTools/3.9.0)
+- `Fluxor.Blazor.Web` [v5.7.0](https://www.nuget.org/packages/Fluxor.Blazor.Web)
+- `Fluxor.Blazor.Web.ReduxDevTools` [v5.7.0](https://www.nuget.org/packages/Fluxor.Blazor.Web.ReduxDevTools)
 
 ## F5 Experience
 1. Clone this repository
@@ -50,7 +50,7 @@ The side effect is that we can no longer reference `Program` directly in the cod
 The following workaround can be applied to the `.csproj` file to enable referencing `Program` back as mentioned in [this post in StackOverflow](https://stackoverflow.com/questions/71026438/net-6-asp-net-core-6-0-get-startup-or-program-assembly-from-test-project):
 ```xml
 <ItemGroup>
-   <!-- This exposes Program class in .NET 6 minimal hosting setup -->
+   <!-- This exposes Program class in .NET minimal hosting setup -->
    <InternalsVisibleTo Include="BlazorWithRedux" />
 </ItemGroup>
 ```
