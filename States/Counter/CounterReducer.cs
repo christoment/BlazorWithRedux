@@ -1,13 +1,12 @@
 using Fluxor;
 
-namespace BlazorWithRedux.States.Counter
+namespace BlazorWithRedux.States.Counter;
+
+public static class CounterReducer
 {
-    public static class CounterReducer
+    [ReducerMethod]
+    public static CounterState OnIncreaseCounter(CounterState state, IncreaseCounter action) => state with
     {
-        [ReducerMethod]
-        public static CounterState OnIncreaseCounter(CounterState state, IncreaseCounter action) => state with
-        {
-            Count = state.Count + action.Step
-        };
-    }
+        Count = state.Count + action.Step
+    };
 }
