@@ -1,0 +1,62 @@
+@page "/throttling"
+
+@inject IState<ThrottlingState> ThrottlingState
+@inject IDispatcher Dispatcher
+
+@using System.Threading
+@using BlazorWithRedux.States.Throttling
+@inherits FluxorComponent
+
+<h1>Throttling</h1>
+
+<div>Total Count: @ThrottlingState.Value.UnthrottledCount</div>
+<div>Count update per second: @(CountUpdateRate)</div>
+<div>Max update per second: @MaximumStateChangedNotificationsPerSecond</div>
+
+@code {
+    private PeriodicTimer _timer;
+    private readonly CancellationTokenSource _periodicTimerCts = new();
+
+    private double CountUpdateRate => Math.Round(1000 / _timer.Period.Duration().TotalMilliseconds, 2);
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        
+        // Constraints the Fluxor to only call StateHasChanged() 2 times per seconds
+        base.MaximumStateChangedNotificationsPerSecond = 2;
+
+        SetupIntervalTimer();
+    }
+
+    private void SetupIntervalTimer()
+    {
+        _timer = new PeriodicTimer(TimeSpan.FromMilliseconds(100));
+
+        _ = PeriodicTimerAction(
+            _periodicTimerCts.Token, 
+            () =>
+            {
+                Dispatcher.Dispatch(new TriggerThrottlingCounter());
+            });
+    }
+
+    private async Task PeriodicTimerAction(CancellationToken ct, Action action)
+    {
+        while (await _timer.WaitForNextTickAsync(ct))
+        {
+            action.Invoke();
+        }
+    }
+
+    protected override void Dispose(bool disposing)
+    {
+        // Important - When overriding Dispose on FluxorComponent, it is important to call base.Dispose().
+        //             See https://github.com/mrpmorris/Fluxor/blob/master/Docs/disposable-callback-not-disposed.md#not-calling-basedispose
+        base.Dispose(disposing);
+        _periodicTimerCts.Cancel();
+        _periodicTimerCts.Dispose();
+        _timer.Dispose();
+    }
+
+}

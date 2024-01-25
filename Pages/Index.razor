@@ -2,6 +2,33 @@
 
 <h1>Hello, world!</h1>
 
-Welcome to your new app.
+<div>
+    This is an example Blazor app to demonstrate <a href="https://github.com/mrpmorris/Fluxor" target="_blank">Fluxor</a>.
+</div>
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+<div class="mt-2">
+    Highlight of Fluxor for Blazor app development:
+    
+    <div class="d-flex flex-column mt-4" style="gap: 0.5rem">
+        <div class="card">
+            <div class="card-header">
+                Auto-wiring of state change
+            </div>
+            <div class="card-body">
+                <code>FluxorComponent</code> will automatically invoke the component's <code>StateHasChanged()</code> whenever there is an update in the injected state.<br/>
+                This allows us to not worry about having to call <code>StateHasChanged()</code> in a cross-component communication.<br/><br/> 
+                See how <NavLink href="/counter">Counter example</NavLink> will automatically update the left navigation bar counter.
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                Throttling of state update.
+            </div>
+            <div class="card-body">
+                Fluxor also provides a throttling mechanism to reduce the rate of state update.
+                This is very useful when building an application with a very frequent state changes (e.g. reducing 100+ real-time update per seconds to 10 update per seconds).<br/><br/>
+                See <NavLink href="/throttling">Throttling example</NavLink> for more details.
+            </div>
+        </div>
+    </div>
+</div>
